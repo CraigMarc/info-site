@@ -19,7 +19,7 @@ http
     } 
    
     else {
-      filename = "." + q.pathname;
+      filename = "." + q.pathname + ".html";
     }
 
     fs.readFile(filename, function (err, data) {
