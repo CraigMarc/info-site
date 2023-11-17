@@ -4,10 +4,11 @@ const http = require("http");
 const url = require("url");
 const fs = require("fs");
 
-const page404 = fs.readFileSync("404.html", "utf-8", (err, data) => {
+const page404 = fs.readFileSync("404.html", (err, data) => {
   if (err) throw err;
   return data;
 });
+
 
 http
   .createServer(function (req, res) {
@@ -17,11 +18,11 @@ http
     if (q.pathname === "/") {
       filename = "." + "/index.html";
     } 
-   
+  
     else {
-      filename = "." + q.pathname + ".html";
+      filename = "." + q.pathname;
     }
-
+    console.log(filename)
     fs.readFile(filename, function (err, data) {
         
       if (err) {
